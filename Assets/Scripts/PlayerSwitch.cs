@@ -31,13 +31,17 @@ public class PlayerSwitch : MonoBehaviour {
 		switchToC1 = true;
 		cameraMovement.Character = c1;
 		c1.GetComponent<PlayerMovement> ().enabled = true;
+		c1.GetComponent<PlayerFollow> ().enabled = false;
 		c2.GetComponent<PlayerMovement> ().enabled = false;
+		c2.GetComponent<PlayerFollow> ().enabled = true;
 	}
 
 	private void C2Turn() {
 		switchToC1 = false;
 		cameraMovement.Character = c2;
 		c1.GetComponent<PlayerMovement> ().enabled = false;
+		c1.GetComponent<PlayerFollow> ().enabled = true;
 		c2.GetComponent<PlayerMovement> ().enabled = true;
+		c2.GetComponent<PlayerFollow> ().enabled = false;
 	}
 }
