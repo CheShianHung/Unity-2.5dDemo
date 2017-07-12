@@ -24,6 +24,7 @@ public class PlayerFollow : MonoBehaviour {
 	}
 
 	void OnEnable() {
+		transformQueue = new Queue<Vector3> ();
 		ResetQueue ();
 	}
 
@@ -43,7 +44,6 @@ public class PlayerFollow : MonoBehaviour {
 
 	private void PositionUpdate(){
 		Vector3 targetCurrentPosition = playerToFollow.transform.position;
-		print (Mathf.Abs (targetCurrentPosition.x - targetPreviousPosition.x));
 		if (Mathf.Abs (targetCurrentPosition.x - targetPreviousPosition.x) > 0.05f || Mathf.Abs (targetCurrentPosition.z - targetPreviousPosition.z) > 0.05f) {
 			if (transformQueue.Count == queueSizeLimit) {
 				Vector3 pastPosition = transformQueue.Dequeue ();
