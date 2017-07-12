@@ -15,10 +15,7 @@ public class PlayerFollow : MonoBehaviour {
 
 	void Start () {
 		transformQueue = new Queue<Vector3> ();
-		targetStartPosition = playerToFollow.transform.position;
-		targetPreviousPosition = playerToFollow.transform.position;
-		startPosition = transform.position;
-		positionLerpFrame = 0f;
+		ResetQueue ();
 	}
 	
 	void FixedUpdate () {
@@ -27,9 +24,7 @@ public class PlayerFollow : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		startPosition = transform.position;
-		targetPreviousPosition = playerToFollow.transform.position;
-		positionLerpFrame = 0f;
+		ResetQueue ();
 	}
 
 	void OnDisable() {
@@ -62,6 +57,8 @@ public class PlayerFollow : MonoBehaviour {
 				positionLerpFrame += (float)1f / queueSizeLimit;
 			}
 			transformQueue.Enqueue (playerToFollow.transform.position);
+		} else {
+			ResetQueue ();
 		}
 	}
 
@@ -69,6 +66,13 @@ public class PlayerFollow : MonoBehaviour {
 		Vector3 direction = playerToFollow.transform.position - transform.position;
 		direction.y = 0;
 		transform.rotation = Quaternion.LookRotation (direction);
+	}
+
+	private void ResetQueue(){
+		startPosition = transform.position;
+		targetStartPosition = playerToFollow.transform.position;
+		transformQueue.Clear ();
+		positionLerpFrame = 0f;
 	}
 		
 }
