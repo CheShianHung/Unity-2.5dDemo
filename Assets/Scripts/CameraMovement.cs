@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Main Camera
+
 public class CameraMovement : MonoBehaviour {
 	
 	public GameObject Character;

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Character1, Character2
+
 public class PlayerMovement : MonoBehaviour {
 
 	//Direction Rotation
@@ -101,17 +103,5 @@ public class PlayerMovement : MonoBehaviour {
 			jumping = false;
 		}
 	}
-
-	private void OnTriggerEnter(Collider other) {
-		CameraMovement cameraMovement = GameObject.Find ("Main Camera").GetComponent<CameraMovement> ();
-		string[] strAry = other.gameObject.name.Split('_');
-		string parentObject = other.gameObject.transform.parent.gameObject.name;
-
-		if (parentObject == "Transform") {
-			cameraMovement.setCameraOffset (float.Parse (strAry [1]), float.Parse (strAry [2]), float.Parse (strAry [3]));
-		} else if (parentObject == "Quaternion") {
-			cameraMovement.setCameraQuaternion (float.Parse (strAry [1]), float.Parse (strAry [2]), float.Parse (strAry [3]));
-		}
-
-	}
+		
 }

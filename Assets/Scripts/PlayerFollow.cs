@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Character1, Character2
+
 public class PlayerFollow : MonoBehaviour {
 
 	public GameObject playerToFollow;
